@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Docker templates - Valentin Lewicki</title>
+        <title>FastAPI Image - Valentin Lewicki</title>
       
     
     
@@ -69,6 +69,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#fastapi-image" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -98,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker templates
+              FastAPI Image
             
           </span>
         </div>
@@ -232,9 +237,11 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
+  
+    
   
   Programming
 
@@ -308,6 +315,14 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+    
     
     
       
@@ -324,8 +339,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -334,8 +350,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
@@ -343,6 +365,8 @@
             Programming
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -357,13 +381,15 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Docker templates
+    FastAPI Image
     
   </span>
   
@@ -399,6 +425,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -414,9 +442,38 @@
 
 
 
-  <h1>Docker templates</h1>
+<h1 id="fastapi-image">FastAPI Image</h1>
+<pre><code class="language-bash"># Setup environment
+uv init --package vlewicki
+cd vlewicki
+uv add 'fastapi[standard]'
+</code></pre>
+<pre><code class="language-python"># main.py
+from vlewicki import app
+</code></pre>
+<pre><code class="language-Dockerfile"># Dockerfile
+FROM alpine:latest
+RUN apk add python3 uv
 
+WORKDIR /app
+COPY ./pyproject.toml \
+    ./uv.lock \
+    ./.python-version \
+    ./main.py \
+    ./README.md \
+    ./
 
+COPY ./src \
+    /app/src
+
+RUN uv sync
+
+CMD [&quot;uv&quot;, &quot;run&quot;, &quot;fastapi&quot;, &quot;run&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;]
+</code></pre>
+<pre><code class="language-bash"># Building image
+docker build -t vlewicki:0.1.0 .
+docker run --rm -p 8000:8000 vlewicki:0.1.0
+</code></pre>
 
 
 
@@ -465,7 +522,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "search.suggest"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.indexes", "search.suggest"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
