@@ -6,7 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Notes About Programming and Life">
       
+      
+        <meta name="author" content="Valentin Lewicki">
+      
+      
+        <link rel="canonical" href="https://vlewicki.github.io/programming/docker-templates/">
       
       
         <link rel="prev" href="../">
@@ -220,7 +226,7 @@
   
     
   
-  README.md
+  Home
 
       </a>
     </li>
@@ -295,7 +301,7 @@
   
   
   <span class="md-ellipsis">
-    README.md
+    Home
     
   </span>
   
@@ -473,6 +479,7 @@ CMD [&quot;uv&quot;, &quot;run&quot;, &quot;fastapi&quot;, &quot;run&quot;, &quo
 <pre><code class="language-bash"># Building image
 docker build -t vlewicki:0.1.0 .
 docker run --rm -p 8000:8000 vlewicki:0.1.0
+docker run -p 8000:8000 vlewicki:0.1.0 uv run fastapi dev --host 0.0.0.0
 </code></pre>
 
 
