@@ -12,21 +12,19 @@
         <meta name="author" content="Valentin Lewicki">
       
       
-        <link rel="canonical" href="https://vlewicki.github.io/programming/Alpine/">
+        <link rel="canonical" href="https://vlewicki.github.io/programming/linux/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../git/">
       
       
-        <link rel="next" href="../docker-templates/">
       
-      
-      <link rel="icon" href="../../assets/logo.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
     
     
       
-        <title>Alpine - Valentin Lewicki</title>
+        <title>Linux - Valentin Lewicki</title>
       
     
     
@@ -47,8 +45,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=noto+serif:300,300i,400,400i,700,700i%7Cnoto+mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"noto serif";--md-code-font:"noto mono"}</style>
       
     
     
@@ -106,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Alpine
+              Linux
             
           </span>
         </div>
@@ -139,7 +137,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="deep-orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -223,7 +221,7 @@
   
     
   
-  Home
+  README.md
 
       </a>
     </li>
@@ -298,7 +296,7 @@
   
   
   <span class="md-ellipsis">
-    Home
+    README.md
     
   </span>
   
@@ -321,6 +319,8 @@
       
         
           
+        
+      
         
       
         
@@ -379,28 +379,20 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../docker-pg-backup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Alpine
+    Docker pg backup
     
   </span>
   
 
       </a>
-      
     </li>
   
 
@@ -452,6 +444,37 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -491,245 +514,10 @@
 
 
 
-  <h1>Alpine</h1>
+  <h1>Linux</h1>
 
-<p>It's hard work!</p>
-<pre><code>vi /etc/apk/repositories 
-apk update
-apk add sudo zsh tmux mosh tree git python3 uv
-blkid
-echo '%wheel ALL=(ALL) ALL' &gt; /etc/sudoers.d/wheel
-exit
-vi /etc/apk/repositories 
-exit
-tmux
-la
-ls
-la
-apk
-apk lisst
-apk list
-w3m
-apk list -h
-apk list -h |less
-apk list -I
-apk list -I |less
-apk
-apk add w3m
-sudo ls /root/
-sudo ls -a /root
-sudo cat /root/.ash_history
-sudo cat /root/.ash_history &gt; guide
-vi guide 
-ls
-sudo apk add w3m
-tmux
-w3m
-w3m google.com
-w3m wiki.alpine.com
-w3m wiki.alpinelinux.com
-w3m wiki.alpinelinux.org
-fc-list
-date
-f
-w3m github.com
-sudo apk
-apk search wireguard
-apk search wg
-apk search wg-
-man
-sudo apk add mandoc
-man
-sudo apk install cmatrix
-python
-sudo apk add fontconfig
-fc-list
-sudo apk add font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic
-w3m google.com
-fc-list
-sudo setfont /usr/share/consolefonts/
-apk add font-terminus font-inconsolata
-sudo apk add font-terminus font-inconsolata
-sudo apk add font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra
-fc-list
-fc-list |grep console
-w3m google.com
-reboot
-sudo reboot
-w3m google.com
-sudo apk add htop
-htop
-cls
-python
-uv
-ls
-git
-shell
-which
-which .
-which aash
-which ash
-zsh
-exit
-zsh
-sudo apk search kdb
-sudo apk info kdb
-sudo apk info kbd
-sudo apk add kbd
-kbd
-man kbd
-unicode_start
-w3m google.com
-sudo apk search gh
-sudo apk info gh
-sudo apk add hg
-sudo apk add gh
-zsh
-gh
-gh auth
-gh 
-gh auth
-gh auth login
-la
-cls
-gh
-gh browse
-gh repo list
-gh
-gh repo
-gh repo clone 
-gh repo clone vlewicki.github.io
-ls
-cd vlewicki.github.io/
-ls
-git co dev
-git checkout dev
-ls
-vim docs
-ls
-vi docs/programming/Alpine.md
-cat ~/guide 
-cat ~/guide  &gt;&gt; docs/programming/Alpine.md 
-cat ~/.ash_history  &gt;&gt; docs/programming/Alpine.md 
-   0 vi /etc/apk/repositories 
-   1 exit
-   2 tmux
-   3 la
-   4 ls
-   5 la
-   6 apk
-   7 apk lisst
-   8 apk list
-   9 w3m
-  10 apk list -h
-  11 apk list -h |less
-  12 apk list -I
-  13 apk list -I |less
-  14 apk
-  15 apk add w3m
-  16 sudo ls /root/
-  17 sudo ls -a /root
-  18 sudo cat /root/.ash_history
-  19 sudo cat /root/.ash_history &gt; guide
-  20 vi guide 
-  21 ls
-  22 sudo apk add w3m
-  23 tmux
-  24 w3m
-  25 w3m google.com
-  26 w3m wiki.alpine.com
-  27 w3m wiki.alpinelinux.com
-  28 w3m wiki.alpinelinux.org
-  29 fc-list
-  30 date
-  31 f
-  32 w3m github.com
-  33 sudo apk
-  34 apk search wireguard
-  35 apk search wg
-  36 apk search wg-
-  37 man
-  38 sudo apk add mandoc
-  39 man
-  40 sudo apk install cmatrix
-  41 python
-  42 sudo apk add fontconfig
-  43 fc-list
-  44 sudo apk add font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic
-  45 w3m google.com
-  46 fc-list
-  47 sudo setfont /usr/share/consolefonts/
-  48 apk add font-terminus font-inconsolata
-  49 sudo apk add font-terminus font-inconsolata
-  50 sudo apk add font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra
-  51 fc-list
-  52 fc-list |grep console
-  53 w3m google.com
-  54 reboot
-  55 sudo reboot
-  56 w3m google.com
-  57 sudo apk add htop
-  58 htop
-  59 cls
-  60 python
-  61 uv
-  62 ls
-  63 git
-  64 shell
-  65 which
-  66 which .
-  67 which aash
-  68 which ash
-  69 zsh
-  70 exit
-  71 zsh
-  72 sudo apk search kdb
-  73 sudo apk info kdb
-  74 sudo apk info kbd
-  75 sudo apk add kbd
-  76 kbd
-  77 man kbd
-  78 unicode_start
-  79 w3m google.com
-  80 sudo apk search gh
-  81 sudo apk info gh
-  82 sudo apk add hg
-  83 sudo apk add gh
-  84 zsh
-  85 gh
-  86 gh auth
-  87 gh 
-  88 gh auth
-  89 gh auth login
-  90 la
-  91 cls
-  92 gh
-  93 gh browse
-  94 gh repo list
-  95 gh
-  96 gh repo
-  97 gh repo clone 
-  98 gh repo clone vlewicki.github.io
-  99 ls
- 100 cd vlewicki.github.io/
- 101 ls
- 102 git co dev
- 103 git checkout dev
- 104 ls
- 105 vim docs
- 106 ls
- 107 vi docs/programming/Alpine.md
- 108 cat ~/guide 
- 109 cat ~/guide  &gt;&gt; docs/programming/Alpine.md 
- 110 cat ~/.ash_history  &gt;&gt; docs/programming/Alpine.md 
- 111 vi docs/programming/Alpine.md 
- 112 ls
- 113 cd 
- 114 ls
- 115 la
- 116 ls -la
- 117 history 
- 118 history &gt;&gt; vlewicki.github.io/docs/programming/Alpine.md 
+<pre><code>echo '%wheel ALL=(ALL) ALL' &gt; /etc/sudoers.d/wheel
+
 </code></pre>
 
 

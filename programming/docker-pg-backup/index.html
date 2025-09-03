@@ -12,13 +12,13 @@
         <meta name="author" content="Valentin Lewicki">
       
       
-        <link rel="canonical" href="https://vlewicki.github.io/programming/git/">
+        <link rel="canonical" href="https://vlewicki.github.io/programming/docker-pg-backup/">
       
       
-        <link rel="prev" href="../docker-templates/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../linux/">
+        <link rel="next" href="../docker-templates/">
       
       
       <link rel="icon" href="../../assets/favicon.svg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Git - Valentin Lewicki</title>
+        <title>Docker pg backup - Valentin Lewicki</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git
+              Docker pg backup
             
           </span>
         </div>
@@ -381,10 +381,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../docker-pg-backup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -395,6 +402,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -427,17 +435,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
         
   
   
@@ -448,7 +449,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -516,12 +516,12 @@
 
 
 
-  <h1>Git</h1>
+  <h1>Docker pg backup</h1>
 
-<p>Change git account for repo:</p>
-<pre><code class="language-bash">git config core.sshCommand &quot;ssh -i ~/.ssh/key&quot;
-git config user.name &quot;Valentin Lewicki&quot;
-git config user.email &quot;vlewicki@vlewicki.ru&quot;
+<pre><code>docker exec -t &lt;container_name&gt; pg_dump -U &lt;username&gt; -d &lt;database_name&gt; | gzip &gt; backup.sql.gz
+rclone copy backup.sql.gz gdrive_encrypted:backups/
+# Delete local file after upload
+rm backup.sql.gz
 </code></pre>
 
 
