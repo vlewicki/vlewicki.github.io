@@ -1,12 +1,16 @@
-# Home
+---
+title: README.md
+homepage: true
+---
+<!--![](assets/banner.svg)-->
 
+# README.md
 To deploy changes:
 
 `uv run mkdocs serve` - Start the live-reloading docs server.
 
 `uv run mkdocs gh-deploy` - Build and push to GitHub gh-pages branch.
 
-![](assets/logo.svg "My Logo")
 ## Setup
 ``` bash
 uv add mkdocs mkdocs-material
