@@ -6,7 +6,7 @@ git config user.email "vlewicki@vlewicki.ru"
 ```
 
 GitHub:
-```
+```yml
 name: CI
 on:
   push:

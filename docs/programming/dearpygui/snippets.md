@@ -1,5 +1,5 @@
 DPG context managment:
-```
+```python
 from contextlib import contextmanager
 import dearpygui.dearpygui as dpg
 

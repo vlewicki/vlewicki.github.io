@@ -22,7 +22,6 @@ theme:
     - navigation.indexes
     - search.suggest
   palette:
-
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
@@ -46,3 +45,8 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+
+markdown_extensions:
+  - pymdownx.highlight:
+    anchor_linenums: true
+  - pymdownx.superfences:
