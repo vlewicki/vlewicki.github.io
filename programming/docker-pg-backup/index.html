@@ -621,11 +621,11 @@
 
   <h1>Docker pg backup</h1>
 
-<pre><code>docker exec -t &lt;container_name&gt; pg_dump -U &lt;username&gt; -d &lt;database_name&gt; | gzip &gt; backup.sql.gz
-rclone copy backup.sql.gz gdrive_encrypted:backups/
-# Delete local file after upload
-rm backup.sql.gz
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker exec -t &lt;container_name&gt; pg_dump -U &lt;username&gt; -d &lt;database_name&gt; | gzip &gt; backup.sql.gz
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>rclone copy backup.sql.gz gdrive_encrypted:backups/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a># Delete local file after upload
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>rm backup.sql.gz
+</span></code></pre></div>
 
 
 
