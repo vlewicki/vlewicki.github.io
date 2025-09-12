@@ -548,9 +548,8 @@
 git config user.name &quot;Valentin Lewicki&quot;
 git config user.email &quot;vlewicki@vlewicki.ru&quot;
 </code></pre>
-<p>GitHub:
-```
-name: CI
+<p>GitHub:</p>
+<pre><code>name: CI
 on:
   push:
     branches:
@@ -559,8 +558,9 @@ on:
   pull_request:
     branches:
       - master
-      - dev</p>
-<p>jobs:
+      - dev
+
+jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
@@ -574,7 +574,8 @@ on:
           python -m pip install uv
           uv sync
       - name: Run tests
-        run: uv run pytest</p>
+        run: uv run pytest
+</code></pre>
 
 
 
