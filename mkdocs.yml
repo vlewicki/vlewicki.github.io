@@ -17,6 +17,8 @@ theme:
     - social:
       cards_layout: default/variant
   features:
+    - content.code.copy
+    - content.code.annotate
     - navigation.tabs
     - navigation.instant
     - navigation.indexes
