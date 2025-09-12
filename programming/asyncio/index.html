@@ -12,13 +12,13 @@
         <meta name="author" content="Valentin Lewicki">
       
       
-        <link rel="canonical" href="https://vlewicki.github.io/programming/docker-templates/">
+        <link rel="canonical" href="https://vlewicki.github.io/programming/asyncio/">
       
       
-        <link rel="prev" href="../docker-pg-backup/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../git/">
+        <link rel="next" href="../docker-pg-backup/">
       
       
       <link rel="icon" href="../../assets/favicon.svg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>FastAPI Image - Valentin Lewicki</title>
+        <title>Running asyncio loop in a separate thread - Valentin Lewicki</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fastapi-image" class="md-skip">
+        <a href="#running-asyncio-loop-in-a-separate-thread" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FastAPI Image
+              Running asyncio loop in a separate thread
             
           </span>
         </div>
@@ -388,10 +388,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../asyncio/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -402,6 +411,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -434,19 +444,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../docker-templates/" class="md-nav__link">
         
   
   
@@ -457,7 +458,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -550,38 +550,27 @@
 
 
 
-<h1 id="fastapi-image">FastAPI Image</h1>
-<pre><code class="language-bash"># Setup environment
-uv init --package vlewicki
-cd vlewicki
-uv add 'fastapi[standard]'
+<h1 id="running-asyncio-loop-in-a-separate-thread">Running asyncio loop in a separate thread</h1>
+<p>Full code:
+<a href="../asyncio_thread.py">asyncio_thread.py</a></p>
+<p>Context manager to run an asyncio loop in a separate thread.
+Example usage:</p>
+<pre><code class="language-python">import asyncio
+from asyncio_thread import asyncio_loop_in_thread
+with asyncio_loop_in_thread() as loop:
+    asyncio.run_coroutine_threadsafe(asyncio.sleep(1), loop)
+    while True:
+        pass
 </code></pre>
-<pre><code class="language-python"># main.py
-from vlewicki import app
-</code></pre>
-<pre><code class="language-Dockerfile"># Dockerfile
-FROM alpine:latest
-RUN apk add python3 uv
-
-WORKDIR /app
-COPY ./pyproject.toml \
-    ./uv.lock \
-    ./.python-version \
-    ./main.py \
-    ./README.md \
-    ./
-
-COPY ./src \
-    /app/src
-
-RUN uv sync
-
-CMD [&quot;uv&quot;, &quot;run&quot;, &quot;fastapi&quot;, &quot;run&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;]
-</code></pre>
-<pre><code class="language-bash"># Building image
-docker build -t vlewicki:0.1.0 .
-docker run --rm -p 8000:8000 vlewicki:0.1.0
-docker run -p 8000:8000 vlewicki:0.1.0 uv run fastapi dev --host 0.0.0.0
+<p>Decorator to run a function with an asyncio loop in a separate thread.
+Example usage:</p>
+<pre><code class="language-python">import asyncio
+from asyncio_thread import with_asyncio_loop_in_thread
+@with_asyncio_loop_in_thread
+def my_function(loop):
+    asyncio.run_coroutine_threadsafe(asyncio.sleep(1), loop)
+    while True:
+        pass
 </code></pre>
 
 

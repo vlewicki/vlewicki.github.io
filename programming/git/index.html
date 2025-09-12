@@ -331,6 +331,8 @@
       
         
       
+        
+      
     
     
     
@@ -375,6 +377,29 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../asyncio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running asyncio loop in a separate thread
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -523,6 +548,33 @@
 git config user.name &quot;Valentin Lewicki&quot;
 git config user.email &quot;vlewicki@vlewicki.ru&quot;
 </code></pre>
+<p>GitHub:
+```
+name: CI
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - master
+      - dev</p>
+<p>jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      - name: Install dependencies
+        run: |
+          python -m pip install uv
+          uv sync
+      - name: Run tests
+        run: uv run pytest</p>
 
 
 
