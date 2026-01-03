@@ -14,6 +14,7 @@ rm /etc/ssh/sshd_config.d/50-cloud-init.conf
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+curl -fsSL "https://github.com/gpakosz/.tmux/raw/refs/heads/master/install.sh#$(date +%s)" | bash
 ```
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
