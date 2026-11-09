@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 лет за 1 час</title>
+<style>
+  /* Регистрируем цвета, чтобы градиент умел плавно перетекать между сезонами */
+  @property --c1 { syntax: "<color>"; inherits: false; initial-value: #0b1a3a; }
+  @property --c2 { syntax: "<color>"; inherits: false; initial-value: #1e40af; }
+  @property --c3 { syntax: "<color>"; inherits: false; initial-value: #60a5fa; }
+  @property --c4 { syntax: "<color>"; inherits: false; initial-value: #bae6fd; }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+
+    --c1: #0b1a3a;
+    --c2: #1e40af;
+    --c3: #60a5fa;
+    --c4: #bae6fd;
+
+    background-image: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4));
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    animation: flow 26s ease-in-out infinite;
+  }
+
+  /* Плавный переход цветов при смене сезона (включаем после первой отрисовки) */
+  body.ready {
+    transition: --c1 2.5s ease, --c2 2.5s ease, --c3 2.5s ease, --c4 2.5s ease;
+  }
+
+  /* Палитры сезонов */
+  body[data-season="winter"] { --c1: #0b1a3a; --c2: #1e40af; --c3: #60a5fa; --c4: #bae6fd; }
+  body[data-season="spring"] { --c1: #14532d; --c2: #22c55e; --c3: #86efac; --c4: #fbcfe8; }
+  body[data-season="summer"] { --c1: #b45309; --c2: #f59e0b; --c3: #fbbf24; --c4: #a3e635; }
+  body[data-season="autumn"] { --c1: #7c2d12; --c2: #b45309; --c3: #ea580c; --c4: #f59e0b; }
+
+  @keyframes flow {
+    0%   { background-position: 0% 50%; }
+    25%  { background-position: 100% 0%; }
+    50%  { background-position: 100% 100%; }
+    75%  { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Легкая виньетка для читаемости текста */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,.28) 100%);
+  }
+
+  .scene {
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+    text-align: center;
+    text-shadow: 0 2px 40px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.18);
+    transition: opacity 2s ease .6s, transform 2s ease .6s;
+  }
+
+  body.done .scene {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
+  .hint {
+    margin: 0 0 28px;
+    padding-left: .38em;
+    font-size: clamp(11px, 1.6vw, 14px);
+    text-transform: uppercase;
+    letter-spacing: .38em;
+    opacity: .75;
+  }
+
+  .date {
+    margin: 0;
+    font-size: clamp(30px, 8.5vw, 104px);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .progress {
+    margin: 40px auto 0;
+    width: min(520px, 70vw);
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.28);
+    overflow: hidden;
+  }
+
+  .bar {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: rgba(255,255,255,.92);
+    transition: width .9s linear;
+  }
+
+  .sub {
+    margin: 18px 0 0;
+    font-size: clamp(12px, 1.8vw, 15px);
+    letter-spacing: .02em;
+    opacity: .75;
+  }
+
+  .final {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    font-size: clamp(22px, 4.5vw, 44px);
+    font-weight: 300;
+    line-height: 1.35;
+    letter-spacing: .01em;
+    text-shadow: 0 2px 40px rgba(0,0,0,.35), 0 1px 3px rgba(0,0,0,.2);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 2.5s ease .8s, transform 2.5s ease .8s;
+  }
+
+  body.done .final {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+  <main class="scene">
+    <p class="hint">10 лет за 1 час</p>
+    <h1 class="date" id="date">—</h1>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <p class="sub">Одна секунда — один день</p>
+  </main>
+
+  <div class="final" id="final">Спасибо, что уделили свое время себе</div>
+
+<script>
+(function () {
+  "use strict";
+
+  const MONTHS = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  ];
+  const MS_DAY = 86400000;
+
+  // Старт — сегодняшняя дата (начало дня)
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+
+  // Финиш — та же дата через 10 лет
+  const end = new Date(start);
+  end.setFullYear(end.getFullYear() + 10);
+
+  // Точное число дней между датами (в UTC, чтобы не мешали часовые пояса)
+  const totalDays = Math.round(
+    (Date.UTC(end.getFullYear(), end.getMonth(), end.getDate()) -
+     Date.UTC(start.getFullYear(), start.getMonth(), start.getDate())) / MS_DAY
+  );
+
+  const dateEl = document.getElementById("date");
+  const barEl  = document.getElementById("bar");
+  const root   = document.body;
+
+  function seasonOf(month) {
+    if (month === 11 || month <= 1) return "winter"; // дек–фев
+    if (month <= 4) return "spring";                 // мар–май
+    if (month <= 7) return "summer";                 // июн–авг
+    return "autumn";                                 // сен–ноя
+  }
+
+  function dateAt(index) {
+    const d = new Date(start);
+    d.setDate(d.getDate() + index);
+    return d;
+  }
+
+  function render(index) {
+    const d = dateAt(index);
+    dateEl.textContent = d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+
+    const season = seasonOf(d.getMonth());
+    if (root.dataset.season !== season) root.dataset.season = season;
+
+    barEl.style.width = (Math.min(index, totalDays) / totalDays * 100) + "%";
+  }
+
+  let startedAt = 0;
+  let lastIndex = -1;
+  let finished = false;
+
+  function finish() {
+    finished = true;
+    root.classList.add("done");
+  }
+
+  function frame(now) {
+    if (finished) return;
+
+    const index = Math.floor((now - startedAt) / 1000);
+
+    if (index >= totalDays) {
+      render(totalDays); // финальная дата — ровно через 10 лет
+      finish();
+      return;
+    }
+
+    if (index !== lastIndex) {
+      lastIndex = index;
+      render(index);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  // Первый кадр
+  render(0);
+
+  requestAnimationFrame(function () {
+    root.classList.add("ready"); // включаем плавную смену сезонных градиентов
+    startedAt = performance.now();
+    requestAnimationFrame(frame);
+  });
+})();
+</script>
+</body>
+</html>
